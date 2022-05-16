@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="JavaProcessor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaProcessor_jar</output-path>
+    <root id="archive" name="JavaProcessor.jar">
+      <element id="module-output" name="JavaProcessor" />
+    </root>
+  </artifact>
+</component>

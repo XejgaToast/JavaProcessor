@@ -1,16 +1,30 @@
 package com.company;
 
+
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    private static final int MAX_VALUE = 65535;
+
+    public static void main(String[] args) throws IOException {
         Processor processor = new Processor();
-        processor.add(Processor.StringTo16Bit("0000100110101101"), Processor.StringTo16Bit("0010100010111111"));
-        processor.printState();
-        processor.and(Processor.StringTo16Bit("0000000110010100"),Processor.StringTo16Bit("0000000010011111"));
-        processor.printState();
-        processor.or(Processor.StringTo16Bit("0000000110010100"),Processor.StringTo16Bit("0000000010011111"));
-        processor.printState();
+        if(args.length==1) {
+            processor.loadFile(args[0]);
+        }
+        processor.printFile();
     }
+
+    public static char eightBitToChr(boolean[] bits) {
+        char chr = 0;
+        for(int i=7;i>=0;i--) {
+            if(bits[i]) {
+                chr += Processor.twoToTwo(7-i);
+            }
+        }
+        return chr;
+    }
+
     public int hexChrToInt(char hex) {
         return switch (hex) {
             case '0' -> 0;
